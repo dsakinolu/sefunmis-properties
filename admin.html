@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sefunmi's Properties — Admin</title>
+  <meta name="description" content="Sefunmi's Properties — a property management system with a real SQL database running in the browser. Search rentals by city, owner, date, and more.">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0e3d47">
+  <link rel="icon" href="images/icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Sefunmi's Properties">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/sql-wasm.wasm" as="fetch" type="application/wasm" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <div class="wrap bar">
+      <a class="brand" href="index.html">
+        <img src="images/logo.png" alt="">
+        <span><span class="bt">Sefunmi's Properties</span><br><span class="bs">Property Management</span></span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="index.html">Properties</a></li>
+          <li><a href="directory.html">Directory</a></li>
+          <li><a href="admin.html" aria-current="page">Admin</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+  <div id="login-view">
+    <div class="login-shell">
+      <div class="login-card">
+        <img src="images/logo.png" alt="">
+        <h1>Staff sign-in</h1>
+        <p class="hint">Manage listings, tenants and leases.</p>
+        <form id="login-form">
+          <label class="f">Username<input type="text" id="lg-user" autocomplete="username" required></label>
+          <label class="f">Password<input type="password" id="lg-pass" autocomplete="current-password" required></label>
+          <button class="btn btn-primary" style="width:100%" type="submit">Sign in</button>
+          <p class="query-error" id="lg-error" hidden>Incorrect username or password.</p>
+        </form>
+        <div class="cred-note">
+          <strong>Demo credentials</strong> — username <code>admin</code>, password <code>sefunmi2026</code>.
+          This is a portfolio demo: the check runs in the browser and protects nothing real.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div id="admin-view" hidden>
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head" style="display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; align-items:center">
+          <div>
+            <h2>Admin dashboard</h2>
+            <p class="sub">Add records to the database, or run your own SQL against it.</p>
+          </div>
+          <button class="btn btn-quiet small" id="logout-btn" type="button">Sign out</button>
+        </div>
+
+        <div class="admin-tabs">
+          <button class="btn btn-primary" data-az="property" type="button">Add property</button>
+          <button class="btn btn-quiet" data-az="tenant" type="button">Add tenant</button>
+          <button class="btn btn-quiet" data-az="owner" type="button">Add owner</button>
+          <button class="btn btn-quiet" data-az="sql" type="button">SQL console</button>
+        </div>
+
+        <div class="admin-zone active" id="az-property">
+          <div class="panel">
+            <h3>New property</h3>
+            <div class="form-grid">
+              <label class="f">Street address<input type="text" id="p-address" placeholder="123 Oak Lane"></label>
+              <label class="f">City<input type="text" id="p-city" placeholder="Bloomington"></label>
+              <label class="f">State<input type="text" id="p-state" maxlength="2" placeholder="IN"></label>
+              <label class="f">ZIP<input type="text" id="p-zip" placeholder="47401"></label>
+              <label class="f">Type<select id="p-type"><option>Single Family</option><option>Townhouse</option><option>Condo</option><option>Apartment</option><option>Duplex</option><option>Loft</option></select></label>
+              <label class="f">Bedrooms<input type="number" id="p-beds" min="0" step="1" value="2"></label>
+              <label class="f">Bathrooms<input type="number" id="p-baths" min="0" step="0.5" value="1"></label>
+              <label class="f">Monthly rent<input type="number" id="p-rent" min="0" step="25" placeholder="1500"></label>
+              <label class="f">Owner<select id="p-owner"></select></label>
+              <label class="f">Listed date<input type="date" id="p-listed"></label>
+              <label class="f">Status<select id="p-status"><option>Vacant</option><option>Occupied</option></select></label>
+            </div>
+            <div class="form-actions"><button class="btn btn-primary" id="p-save" type="button">Insert property</button></div>
+            <details class="sql-toggle"><summary>▸ The INSERT this runs</summary><div class="sql-peek"><code>INSERT INTO properties
+  (address, city, state, zip, type, bedrooms,
+   bathrooms, rent, owner_id, listed_date, status)
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);</code></div></details>
+          </div>
+          <div class="panel"><h3>Current properties</h3><div class="table-wrap" id="admin-props"></div></div>
+        </div>
+
+        <div class="admin-zone" id="az-tenant">
+          <div class="panel">
+            <h3>New tenant</h3>
+            <div class="form-grid">
+              <label class="f">Full name<input type="text" id="t-name"></label>
+              <label class="f">Email<input type="email" id="t-email"></label>
+              <label class="f">Phone<input type="tel" id="t-phone"></label>
+              <label class="f">Property<select id="t-property"></select></label>
+              <label class="f">Move-in date<input type="date" id="t-movein"></label>
+            </div>
+            <div class="form-actions"><button class="btn btn-primary" id="t-save" type="button">Insert tenant</button></div>
+          </div>
+          <div class="panel"><h3>Current tenants</h3><div class="table-wrap" id="admin-tenants"></div></div>
+        </div>
+
+        <div class="admin-zone" id="az-owner">
+          <div class="panel">
+            <h3>New owner</h3>
+            <div class="form-grid">
+              <label class="f">Full name<input type="text" id="o-name"></label>
+              <label class="f">Email<input type="email" id="o-email"></label>
+              <label class="f">Phone<input type="tel" id="o-phone"></label>
+            </div>
+            <div class="form-actions"><button class="btn btn-primary" id="o-save" type="button">Insert owner</button></div>
+          </div>
+          <div class="panel"><h3>Current owners</h3><div class="table-wrap" id="admin-owners"></div></div>
+        </div>
+
+        <div class="admin-zone" id="az-sql">
+          <div class="panel">
+            <h3>SQL console</h3>
+            <p class="sub" style="margin-bottom:0.9rem">Run any query against the live database. Try a JOIN.</p>
+            <div class="sample-queries" id="samples"></div>
+            <label class="sr-only" for="sql-input">SQL query</label>
+            <textarea id="sql-input" spellcheck="false"></textarea>
+            <div class="form-actions">
+              <button class="btn btn-primary" id="sql-run" type="button">Run query</button>
+              <button class="btn btn-quiet" id="db-reset" type="button">Reset database to CSV seed</button>
+            </div>
+            <p class="query-error" id="sql-error" hidden></p>
+          </div>
+          <div class="panel"><h3>Results</h3><div class="table-wrap" id="sql-results"><p class="empty">Run a query to see results.</p></div></div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="foot-brand">
+        <img src="images/logo.png" alt="">
+        <div>
+          <strong>Sefunmi's Properties</strong><br>
+          office@sefunmiproperties.com &middot; (202) 888-4567
+        </div>
+      </div>
+      <div>
+        <p>A portfolio demo by <a href="https://dsakinolu.github.io/portfolio/">Sefunmi Akin-Olukunle</a></p>
+        <p>Real SQLite database running in your browser &middot; originally PHP/MySQL</p>
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/sql-wasm.js"></script>
+  <script src="js/seed.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/admin.js"></script>
+  <script>
+    if ("serviceWorker" in navigator) window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js"));
+  </script>
+</body>
+</html>

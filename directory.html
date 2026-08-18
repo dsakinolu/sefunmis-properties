@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sefunmi's Properties — Directory</title>
+  <meta name="description" content="Sefunmi's Properties — a property management system with a real SQL database running in the browser. Search rentals by city, owner, date, and more.">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#0e3d47">
+  <link rel="icon" href="images/icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Sefunmi's Properties">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/sql-wasm.wasm" as="fetch" type="application/wasm" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <div class="wrap bar">
+      <a class="brand" href="index.html">
+        <img src="images/logo.png" alt="">
+        <span><span class="bt">Sefunmi's Properties</span><br><span class="bs">Property Management</span></span>
+      </a>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul>
+          <li><a href="index.html">Properties</a></li>
+          <li><a href="directory.html" aria-current="page">Directory</a></li>
+          <li><a href="admin.html">Admin</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" tabindex="-1">
+  <section class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Directory</h2>
+        <p class="sub">Owners, tenants, staff, leases and payment history — the relational side of the system, joined across six tables.</p>
+      </div>
+      <div class="admin-tabs">
+        <button class="btn btn-primary" data-tab="tenants" type="button">Tenants</button>
+        <button class="btn btn-quiet" data-tab="owners" type="button">Owners</button>
+        <button class="btn btn-quiet" data-tab="employees" type="button">Staff</button>
+        <button class="btn btn-quiet" data-tab="leases" type="button">Leases</button>
+        <button class="btn btn-quiet" data-tab="payments" type="button">Payments</button>
+      </div>
+      <div id="dir-content"><div class="loading">Loading…<div class="bar"></div></div></div>
+      <details class="sql-toggle">
+        <summary>▸ See the SQL behind this view</summary>
+        <div class="sql-peek"><code id="dir-sql"></code></div>
+      </details>
+    </div>
+  </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="foot-brand">
+        <img src="images/logo.png" alt="">
+        <div>
+          <strong>Sefunmi's Properties</strong><br>
+          office@sefunmiproperties.com &middot; (202) 888-4567
+        </div>
+      </div>
+      <div>
+        <p>A portfolio demo by <a href="https://dsakinolu.github.io/portfolio/">Sefunmi Akin-Olukunle</a></p>
+        <p>Real SQLite database running in your browser &middot; originally PHP/MySQL</p>
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast" role="status" aria-live="polite"></div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.10.3/sql-wasm.js"></script>
+  <script src="js/seed.js"></script>
+  <script src="js/db.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/directory.js"></script>
+  <script>
+    if ("serviceWorker" in navigator) window.addEventListener("load", () => navigator.serviceWorker.register("./sw.js"));
+  </script>
+</body>
+</html>

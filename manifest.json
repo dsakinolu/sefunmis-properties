@@ -1,0 +1,14 @@
+{
+  "name": "Sefunmi's Properties — Property Management",
+  "short_name": "Sefunmi's Properties",
+  "description": "Search managed rental properties by city, owner, size, and listing date. Powered by a real SQL database.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7f4ec",
+  "theme_color": "#0e3d47",
+  "icons": [
+    { "src": "images/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "images/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
