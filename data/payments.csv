@@ -1,0 +1,76 @@
+payment_id,lease_id,tenant_id,payment_date,amount,method,status
+1,1,1,2025-04-02,2150,Bank Transfer,On time
+2,1,1,2025-05-02,2150,Bank Transfer,On time
+3,1,1,2025-06-07,2150,Check,Late
+4,1,1,2025-07-07,2150,Check,Late
+5,1,1,2025-08-07,2150,Check,Late
+6,1,1,2025-09-02,2150,Bank Transfer,On time
+7,1,1,2025-10-02,2150,Bank Transfer,On time
+8,1,1,2025-11-02,2150,Check,On time
+9,1,1,2025-12-02,2150,Check,On time
+10,1,1,2026-01-02,2150,Bank Transfer,On time
+11,2,2,2025-06-02,3100,Check,On time
+12,2,2,2025-07-02,3100,Check,On time
+13,2,2,2025-08-02,3100,Bank Transfer,On time
+14,2,2,2025-09-02,3100,Bank Transfer,On time
+15,2,2,2025-10-02,3100,Bank Transfer,On time
+16,2,2,2025-11-02,3100,Bank Transfer,On time
+17,2,2,2025-12-02,3100,Check,On time
+18,2,2,2026-01-02,3100,Check,On time
+19,2,2,2026-02-02,3100,Check,On time
+20,2,2,2026-03-02,3100,Bank Transfer,On time
+21,3,3,2024-12-02,2450,Check,On time
+22,3,3,2025-01-02,2450,Check,On time
+23,3,3,2025-02-07,2450,Bank Transfer,Late
+24,3,3,2025-03-02,2450,Check,On time
+25,3,3,2025-04-02,2450,Card,On time
+26,3,3,2025-05-02,2450,Card,On time
+27,3,3,2025-06-02,2450,Bank Transfer,On time
+28,3,3,2025-07-02,2450,Check,On time
+29,3,3,2025-08-02,2450,Bank Transfer,On time
+30,3,3,2025-09-02,2450,Check,On time
+31,4,4,2026-02-02,975,Card,On time
+32,4,4,2026-03-02,975,Card,On time
+33,4,4,2026-04-02,975,Bank Transfer,On time
+34,4,4,2026-05-07,975,Card,Late
+35,4,4,2026-06-02,975,Card,On time
+36,4,4,2026-07-02,975,Card,On time
+37,4,4,2026-08-02,975,Check,On time
+38,5,5,2025-10-07,1420,Check,Late
+39,5,5,2025-11-02,1420,Card,On time
+40,5,5,2025-12-02,1420,Card,On time
+41,5,5,2026-01-02,1420,Check,On time
+42,5,5,2026-02-02,1420,Bank Transfer,On time
+43,5,5,2026-03-02,1420,Card,On time
+44,5,5,2026-04-02,1420,Check,On time
+45,5,5,2026-05-07,1420,Check,Late
+46,5,5,2026-06-02,1420,Check,On time
+47,5,5,2026-07-02,1420,Check,On time
+48,6,6,2025-10-02,1890,Card,On time
+49,6,6,2025-11-02,1890,Check,On time
+50,6,6,2025-12-02,1890,Card,On time
+51,6,6,2026-01-02,1890,Check,On time
+52,6,6,2026-02-07,1890,Bank Transfer,Late
+53,6,6,2026-03-02,1890,Card,On time
+54,6,6,2026-04-02,1890,Bank Transfer,On time
+55,6,6,2026-05-02,1890,Card,On time
+56,6,6,2026-06-07,1890,Card,Late
+57,6,6,2026-07-02,1890,Card,On time
+58,7,7,2024-08-02,3750,Card,On time
+59,7,7,2024-09-02,3750,Card,On time
+60,7,7,2024-10-02,3750,Card,On time
+61,7,7,2024-11-02,3750,Card,On time
+62,7,7,2024-12-02,3750,Bank Transfer,On time
+63,7,7,2025-01-07,3750,Bank Transfer,Late
+64,7,7,2025-02-02,3750,Bank Transfer,On time
+65,7,7,2025-03-07,3750,Check,Late
+66,7,7,2025-04-02,3750,Card,On time
+67,7,7,2025-05-07,3750,Card,Late
+68,8,8,2026-01-02,2280,Check,On time
+69,8,8,2026-02-02,2280,Bank Transfer,On time
+70,8,8,2026-03-02,2280,Check,On time
+71,8,8,2026-04-02,2280,Check,On time
+72,8,8,2026-05-02,2280,Bank Transfer,On time
+73,8,8,2026-06-02,2280,Check,On time
+74,8,8,2026-07-02,2280,Card,On time
+75,8,8,2026-08-02,2280,Card,On time

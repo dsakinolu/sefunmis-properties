@@ -1,0 +1,9 @@
+tenant_id,name,email,phone,property_id,move_in_date
+1,Emily Jones,emily.jones@mailbox.com,(312) 555-0102,1,2025-04-01
+2,David Okafor,d.okafor@hello.org,(973) 555-0155,2,2025-06-01
+3,Priya Raman,priya.raman@example.com,(973) 555-0188,4,2024-12-01
+4,Tomas Nowak,t.nowak@mail.com,(812) 555-0121,5,2026-02-01
+5,Aisha Bello,aisha.bello@repute.edu,(317) 555-0139,7,2025-10-01
+6,Kevin Park,kevin.park@youmail.com,(317) 555-0147,8,2025-10-15
+7,Renee Duval,renee.duval@savingearth.gov,(312) 555-0166,9,2024-08-15
+8,Ola Adeyemi,ola.adeyemi@tmail.com,(812) 555-0173,11,2026-01-05

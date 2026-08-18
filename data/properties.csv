@@ -1,0 +1,13 @@
+property_id,address,city,state,zip,type,bedrooms,bathrooms,rent,owner_id,listed_date,status
+1,101 Elm Court,Oak Park,IL,60301,Townhouse,3,2.5,2150,1,2025-03-14,Occupied
+2,88 Maple Ridge Dr,Maplewood,NJ,07040,Single Family,4,3,3100,1,2025-05-02,Occupied
+3,412 Birchwood Ln,Oak Park,IL,60302,Condo,2,2,1650,2,2025-06-21,Vacant
+4,7 Cedar Hollow,Maplewood,NJ,07040,Single Family,3,2,2450,2,2024-11-09,Occupied
+5,250 Willow Bend Apt 4B,Bloomington,IN,47401,Apartment,1,1,975,3,2026-01-15,Occupied
+6,19 Juniper Way,Bloomington,IN,47404,Duplex,2,1.5,1280,3,2026-02-28,Vacant
+7,3300 Sycamore Blvd,Indianapolis,IN,46220,Apartment,2,2,1420,4,2025-08-30,Occupied
+8,55 Aspen Circle,Indianapolis,IN,46208,Townhouse,3,2.5,1890,4,2025-09-12,Occupied
+9,908 Magnolia St,Oak Park,IL,60304,Single Family,5,3.5,3750,5,2024-07-19,Occupied
+10,140 Poplar Terrace,Maplewood,NJ,07040,Condo,2,1,1550,5,2026-04-06,Vacant
+11,66 Hawthorne Ct,Bloomington,IN,47403,Single Family,4,2.5,2280,1,2025-12-01,Occupied
+12,21 Chestnut Row,Indianapolis,IN,46225,Loft,1,1,1150,2,2026-03-22,Vacant
